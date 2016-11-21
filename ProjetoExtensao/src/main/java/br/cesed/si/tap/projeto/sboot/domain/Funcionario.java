@@ -3,25 +3,25 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
-import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.annotation.Id;
 
 public class Funcionario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Field
 	
-	private int id;
+	@Id
+	private String id;
 	
 	public Funcionario(){
 		
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}	
 }

@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +17,10 @@ import br.cesed.si.tap.projeto.sboot.service.FuncionarioService;
 @RestController
 @RequestMapping(value="/funcionario")
 public class FuncionarioController {
-
+	@Autowired
 	private FuncionarioService funcionarioService;
 	
-	@RequestMapping( method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Funcionario> > ListTodosOsFuncionarios(){
 		
 		return new ResponseEntity< List<Funcionario> >
@@ -36,7 +37,7 @@ public class FuncionarioController {
 					new ResponseEntity<Funcionario>(funcionario, HttpStatus.OK);
 	}
 	
-	@RequestMapping( method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoFuncionario(@RequestBody Funcionario funcionario) {
 		try {
 			funcionarioService.save(funcionario);
@@ -49,11 +50,10 @@ public class FuncionarioController {
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
-	public String deletandoFuncionario (@PathVariable String id){
+	public String deletandoFuncionario (@PathVariable Funcionario func){
 		
-		Funcionario funcionario = funcionarioService.getById(id);
-		funcionarioService.deletaFuncionario (funcionario);
-		return "Funcionario deletado " + id;
+		funcionarioService.deletaFuncionario (func);
+		return "Funcionario deletado " + func.getId();
 	}
 	
 	public FuncionarioService getFuncionarioService() {

@@ -27,14 +27,14 @@ public class CursoService {
 	}
 	
 	public Curso save(@NotNull Curso curso){
-		Curso existing = cursoRepository.findById(curso.getId());
+		Curso existing = cursoRepository.findOne(curso.getId());
 		if(existing == null)
 			existing = cursoRepository.save(curso);
 		return existing;
 	}
 	
 	public void deletaCurso(Curso curso){
-		Curso existing = cursoRepository.findById(curso.getId());
+		Curso existing = cursoRepository.findOne(curso.getId());
 		if(existing != null)
 			cursoRepository.delete(existing);
 	}

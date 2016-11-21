@@ -4,8 +4,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import br.cesed.si.tap.projeto.sboot.domain.Orientacao;
 
-public interface OrientacaoRepository extends MongoRepository<Orientacao, Integer>{
+public interface OrientacaoRepository extends MongoRepository<Orientacao, String>{
 
 	public Orientacao findByCursoAndProfessor(String curso, String professor);
-	public Orientacao findById(int id);
+	
 }

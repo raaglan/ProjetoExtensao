@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import br.cesed.si.tap.projeto.sboot.service.AcompanhamentoService;
 @RestController
 @RequestMapping(value="/acompanhamento")
 public class AcompanhamentoController {
-
+	@Autowired
 	private AcompanhamentoService acompanhamentoService;
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -53,7 +54,7 @@ public class AcompanhamentoController {
 	public String deletandoAcomapanhamento (@PathVariable Acompanhamento aco){
 		
 		acompanhamentoService.deletaAcompanhamento(aco);
-		return "Acompanhamento deletado ";
+		return "Acompanhamento deletado " + aco.getId();
 	}
 	
 	public AcompanhamentoService getFuncionarioService() {

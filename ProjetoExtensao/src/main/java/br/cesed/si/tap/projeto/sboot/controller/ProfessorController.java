@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,18 +15,19 @@ import br.cesed.si.tap.projeto.sboot.domain.Professor;
 import br.cesed.si.tap.projeto.sboot.service.ProfessorService;
 
 @RestController
+@RequestMapping(value="/professor")
 public class ProfessorController {
-
+	@Autowired
 	private ProfessorService professorService;
 	
-	@RequestMapping(value="/professor", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Professor> > ListTodosOsProfessores(){
 		
 		return new ResponseEntity< List<Professor> >
 		(professorService.listTodosOsProfessores(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/professor/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity <Professor> getProfessor(@PathVariable String id){
 	
 		Professor professor = professorService.getById(id);
@@ -35,7 +37,7 @@ public class ProfessorController {
 					new ResponseEntity<Professor>(professor, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/professor", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoProfessor(@RequestBody Professor professor) {
 		try {
 			professorService.save(professor);
@@ -47,12 +49,11 @@ public class ProfessorController {
 		}
 	}
 	
-	@RequestMapping(value="/professor/{id}", method = RequestMethod.DELETE)
-	public String deletandoProfessor (@PathVariable String id){
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public String deletandoProfessor (@PathVariable Professor prof){
 		
-		Professor professor = professorService.getById(id);
-		professorService.deletaProfessor (professor);
-		return "Professor deletado " + id;
+		professorService.deletaProfessor (prof);
+		return "Professor deletado " + prof.getId();
 	}
 	
 	public ProfessorService getProfessorService() {

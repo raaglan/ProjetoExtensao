@@ -27,14 +27,14 @@ public class UsuarioService {
 	}
 	
 	public Usuario save(@NotNull Usuario usuario){
-		Usuario existing = usuarioRepository.findById(usuario.getId());
+		Usuario existing = usuarioRepository.findOne(usuario.getId());
 		if(existing == null)
 			existing = usuarioRepository.save(usuario);
 		return existing;
 	}
 	
 	public void deletaUsuario(Usuario usuario){
-		Usuario existing = usuarioRepository.findById(usuario.getId());
+		Usuario existing = usuarioRepository.findOne(usuario.getId());
 		if(existing != null)
 			usuarioRepository.delete(existing);
 	}

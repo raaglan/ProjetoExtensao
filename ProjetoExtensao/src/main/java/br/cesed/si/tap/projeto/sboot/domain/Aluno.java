@@ -3,6 +3,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Aluno implements Serializable{
@@ -15,6 +16,8 @@ public class Aluno implements Serializable{
 	private String matricula;
 	@Field
 	private ArrayList<Curso> curso;
+	@Id
+	private String id;
 	
 	public Aluno(){
 		
@@ -49,5 +52,14 @@ public class Aluno implements Serializable{
 	public void setCurso(ArrayList<Curso> curso) {
 		this.curso = curso;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 }

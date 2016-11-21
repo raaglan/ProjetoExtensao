@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,19 +16,20 @@ import br.cesed.si.tap.projeto.sboot.service.OrientacaoService;
 
 
 @RestController
+@RequestMapping(value="/orientacao")
 public class OrientacaoController {
-
+	@Autowired
 	private OrientacaoService orientacaoService;
 	
-	@RequestMapping(value="/orientacao", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Orientacao> > ListTodosAsOrientacoes(){
 		
 		return new ResponseEntity< List<Orientacao> >
 		(orientacaoService.listTodasAsOrientacoes(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/orientacao/{id}", method = RequestMethod.GET)
-	public ResponseEntity <Orientacao> getOrientacao(@PathVariable int id){
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity <Orientacao> getOrientacao(@PathVariable String id){
 	
 		Orientacao orientacao = orientacaoService.getById(id);
 		
@@ -36,7 +38,7 @@ public class OrientacaoController {
 					new ResponseEntity<Orientacao>(orientacao, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/orientacao", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoOrientacao(@RequestBody Orientacao orientacao) {
 		try {
 			orientacaoService.save(orientacao);
@@ -48,7 +50,7 @@ public class OrientacaoController {
 		}
 	}
 	
-	@RequestMapping(value="/orientacao/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
 	public String deletandoOrientacao (@PathVariable Orientacao ori){
 		
 		//Orientacao orientacao = orientacao.getId();

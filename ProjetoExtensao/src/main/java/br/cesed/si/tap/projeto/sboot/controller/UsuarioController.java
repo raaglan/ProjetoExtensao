@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,18 +15,19 @@ import br.cesed.si.tap.projeto.sboot.domain.Usuario;
 import br.cesed.si.tap.projeto.sboot.service.UsuarioService;
 
 @RestController
+@RequestMapping(value="/usuario")
 public class UsuarioController {
-
+	@Autowired
 	private UsuarioService usuarioService;
 	
-	@RequestMapping(value="/usuario", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Usuario> > ListTodosOsUsuarios(){
 		
 		return new ResponseEntity< List<Usuario> >
 		(usuarioService.listTodosOsUsuarios(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/usuario/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity <Usuario> getUsuario(@PathVariable String id){
 	
 		Usuario usuario = usuarioService.getById(id);
@@ -35,7 +37,7 @@ public class UsuarioController {
 					new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/usuario", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoUsuario(@RequestBody Usuario usuario) {
 		try {
 			usuarioService.save(usuario);
@@ -47,12 +49,11 @@ public class UsuarioController {
 		}
 	}
 	
-	@RequestMapping(value="/usuario/{id}", method = RequestMethod.DELETE)
-	public String deletandoUsuario (@PathVariable String id){
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public String deletandoUsuario (@PathVariable Usuario user){
 		
-		Usuario usuario = usuario.getById(id);
-		usuarioService.deletaUsuario (usuario);
-		return "Usuario deletado " + id;
+		usuarioService.deletaUsuario (user);
+		return "Usuario deletado " + user.getId();
 	}
 	
 	public UsuarioService getUsuarioService() {

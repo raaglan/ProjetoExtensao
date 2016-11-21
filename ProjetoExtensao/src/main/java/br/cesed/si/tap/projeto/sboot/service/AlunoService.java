@@ -27,14 +27,14 @@ public class AlunoService {
 	}
 	
 	public Aluno save(@NotNull Aluno aluno){
-		Aluno existing = alunoRepository.findById(aluno.getId());
+		Aluno existing = alunoRepository.findOne(aluno.getId());
 		if(existing == null)
 			existing = alunoRepository.save(aluno);
 		return existing;
 	}
 	
 	public void deletaAluno(Aluno aluno){
-		Aluno existing = alunoRepository.findById(aluno.getId());
+		Aluno existing = alunoRepository.findOne(aluno.getId());
 		if(existing != null)
 			alunoRepository.delete(existing);
 	}

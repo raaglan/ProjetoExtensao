@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,18 +15,19 @@ import br.cesed.si.tap.projeto.sboot.domain.Pesquisa;
 import br.cesed.si.tap.projeto.sboot.service.PesquisaService;
 
 @RestController
+@RequestMapping(value="/pesquisa")
 public class PesquisaController {
-
+	@Autowired
 	private PesquisaService pesquisaService;
 	
-	@RequestMapping(value="/pesquisa", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Pesquisa> > ListTodosAsPesquisas(){
 		
 		return new ResponseEntity< List<Pesquisa> >
-		(pesquisaService.listTodosAsPesquisas(), HttpStatus.OK);
+		(pesquisaService.listTodasAsPesquisas(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/pesquisa/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity <Pesquisa> getPesquisa(@PathVariable String id){
 	
 		Pesquisa pesquisa = pesquisaService.getById(id);
@@ -35,7 +37,7 @@ public class PesquisaController {
 					new ResponseEntity<Pesquisa>(pesquisa, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/pesquisa", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoPesquisa(@RequestBody Pesquisa pesquisa) {
 		try {
 			pesquisaService.save(pesquisa);
@@ -47,12 +49,11 @@ public class PesquisaController {
 		}
 	}
 	
-	@RequestMapping(value="/pesquisa/{id}", method = RequestMethod.DELETE)
-	public String deletandoPesquisa (@PathVariable String id){
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public String deletandoPesquisa (@PathVariable Pesquisa pesq){
 		
-		Pesquisa pesquisa = pesquisa.getById(id);
-		pesquisaService.deletaPesquisa (pesquisa);
-		return "Pesquisa deletada " + id;
+		pesquisaService.deletaPesquisa (pesq);
+		return "Pesquisa deletada " + pesq.getId();
 	}
 	
 	public PesquisaService getPesquisaService() {

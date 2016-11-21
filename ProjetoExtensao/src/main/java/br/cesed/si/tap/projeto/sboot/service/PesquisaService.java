@@ -27,14 +27,14 @@ public class PesquisaService {
 	}
 	
 	public Pesquisa save(@NotNull Pesquisa pesquisa){
-		Pesquisa existing = pesquisaRepository.findById(pesquisa.getId());
+		Pesquisa existing = pesquisaRepository.findOne(pesquisa.getId());
 		if(existing == null)
 			existing = pesquisaRepository.save(pesquisa);
 		return existing;
 	}
 	
 	public void deletaPesquisa(Pesquisa pesquisa){
-		Pesquisa existing = pesquisaRepository.findById(pesquisa.getId());
+		Pesquisa existing = pesquisaRepository.findOne(pesquisa.getId());
 		if(existing != null)
 			pesquisaRepository.delete(existing);
 	}

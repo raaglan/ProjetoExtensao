@@ -18,7 +18,7 @@ public class OrientacaoService {
 	@Autowired
 	private OrientacaoRepository orientacaoRepository;
 	
-	public Orientacao getById(int id){
+	public Orientacao getById(String id){
 		return orientacaoRepository.findOne(id);
 	}
 	
@@ -27,14 +27,14 @@ public class OrientacaoService {
 	}
 	
 	public Orientacao save(@NotNull Orientacao orientacao){
-		Orientacao existing = orientacaoRepository.findById(orientacao.getId());
+		Orientacao existing = orientacaoRepository.findOne(orientacao.getId());
 		if(existing == null)
 			existing = orientacaoRepository.save(orientacao);
 		return existing;
 	}
 	
 	public void deletaOrientacao(Orientacao orientacao){
-		Orientacao existing = orientacaoRepository.findById(orientacao.getId());
+		Orientacao existing = orientacaoRepository.findOne(orientacao.getId());
 		if(existing != null)
 			orientacaoRepository.delete(existing);
 	}

@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Orientacao implements Serializable{
@@ -16,8 +17,8 @@ public class Orientacao implements Serializable{
 	private Pesquisa pesquisa;
 	@Field
 	private Curso curso;
-	
-	private int id;
+	@Id
+	private String id;
 	
 	public Orientacao(){
 		
@@ -62,11 +63,11 @@ public class Orientacao implements Serializable{
 		this.curso = curso;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 }

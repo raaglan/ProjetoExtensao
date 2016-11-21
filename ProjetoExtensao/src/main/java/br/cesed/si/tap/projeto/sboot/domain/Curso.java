@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Curso implements Serializable{
@@ -10,14 +11,14 @@ public class Curso implements Serializable{
 	
 	@Field
 	private String nome;
-	@Field
-	private int id;
+	@Id
+	private String id;
 	
 	public Curso(){
 		
 	}
 	
-	public Curso(String nome, int id){
+	public Curso(String nome, String id){
 		this.nome = nome;
 		this.id = id;
 	}
@@ -30,11 +31,11 @@ public class Curso implements Serializable{
 		this.nome = nome;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

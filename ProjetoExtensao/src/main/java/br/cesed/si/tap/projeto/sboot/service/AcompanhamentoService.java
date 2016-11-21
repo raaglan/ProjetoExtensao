@@ -27,14 +27,14 @@ public class AcompanhamentoService {
 	}
 	
 	public Acompanhamento save(@NotNull Acompanhamento acompanhamento){
-		Acompanhamento existing = acompanhamentoRepository.findById(acompanhamento.getId());
+		Acompanhamento existing = acompanhamentoRepository.findOne(acompanhamento.getId());
 		if(existing == null)
 			existing = acompanhamentoRepository.save(acompanhamento);
 		return existing;
 	}
 	
 	public void deletaAcompanhamento(Acompanhamento acompanhamento){
-		Acompanhamento existing = acompanhamentoRepository.findById(acompanhamento.getId());
+		Acompanhamento existing = acompanhamentoRepository.findOne(acompanhamento.getId());
 		if(existing != null)
 			acompanhamentoRepository.delete(existing);
 	}

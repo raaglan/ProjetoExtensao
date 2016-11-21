@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Acompanhamento implements Serializable{
@@ -18,6 +19,8 @@ public class Acompanhamento implements Serializable{
 	private Enum<?> status;
 	@Field
 	private String ocorrencia;
+	@Id
+	private String id;
 	
 	public Acompanhamento(){
 		
@@ -62,4 +65,12 @@ public class Acompanhamento implements Serializable{
 		this.ocorrencia = ocorrencia;
 	}
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }

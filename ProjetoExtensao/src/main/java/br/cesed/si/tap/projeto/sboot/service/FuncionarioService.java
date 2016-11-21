@@ -27,14 +27,14 @@ public class FuncionarioService {
 	}
 	
 	public Funcionario save(@NotNull Funcionario funcionario){
-		Funcionario existing = funcionarioRepository.findById(funcionario.getId());
+		Funcionario existing = funcionarioRepository.findOne(funcionario.getId());
 		if(existing == null)
 			existing = funcionarioRepository.save(funcionario);
 		return existing;
 	}
 	
 	public void deletaFuncionario(Funcionario funcionario){
-		Funcionario existing = funcionarioRepository.findById(funcionario.getId());
+		Funcionario existing = funcionarioRepository.findOne(funcionario.getId());
 		if(existing != null)
 			funcionarioRepository.delete(existing);
 	}

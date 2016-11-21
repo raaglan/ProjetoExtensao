@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,18 +15,19 @@ import br.cesed.si.tap.projeto.sboot.domain.Aluno;
 import br.cesed.si.tap.projeto.sboot.service.AlunoService;
 
 @RestController
+@RequestMapping(value="/aluno")
 public class AlunoController {
-
+	@Autowired
 	private AlunoService alunoService;
 	
-	@RequestMapping(value="/aluno", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Aluno> > ListTodosOsAlunos(){
 		
 		return new ResponseEntity< List<Aluno> >
 		(alunoService.listTodosOsAlunos(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/aluno/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity <Aluno> getAluno(@PathVariable String id){
 	
 		Aluno aluno = alunoService.getById(id);
@@ -35,7 +37,7 @@ public class AlunoController {
 					new ResponseEntity<Aluno>(aluno, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/aluno", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoAluno(@RequestBody Aluno aluno) {
 		try {
 			alunoService.save(aluno);
@@ -47,12 +49,12 @@ public class AlunoController {
 		}
 	}
 	
-	@RequestMapping(value="/aluno/{id}", method = RequestMethod.DELETE)
-	public String deletandoAluno (@PathVariable String id){
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public String deletandoAluno (@PathVariable Aluno alun){
 		
-		Aluno aluno = aluno.getById(id);
-		alunoService.deletaAluno (aluno);
-		return "Aluno deletado " + id;
+
+		alunoService.deletaAluno(alun);
+		return "Aluno deletado " + alun.getId();
 	}
 	
 	public AlunoService getAlunoService() {

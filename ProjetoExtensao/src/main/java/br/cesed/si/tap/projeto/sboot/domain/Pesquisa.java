@@ -2,6 +2,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Pesquisa implements Serializable {
@@ -11,15 +12,15 @@ public class Pesquisa implements Serializable {
 	@Field
 	private String descricao;
 	@Field
-	private Enum<?> categoria;
+	private String categoria;
+	@Id
+	private String id;
 	
-	private int id;
-	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -27,7 +28,7 @@ public class Pesquisa implements Serializable {
 		
 	}
 	
-	public Pesquisa (String descricao, Enum<?> categoria){
+	public Pesquisa (String descricao, String categoria){
 		this.descricao = descricao;
 		this.categoria = categoria;
 	}
@@ -40,11 +41,11 @@ public class Pesquisa implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Enum<?> getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Enum<?> categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 	

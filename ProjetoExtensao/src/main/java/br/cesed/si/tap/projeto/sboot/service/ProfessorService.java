@@ -27,14 +27,14 @@ public class ProfessorService {
 	}
 	
 	public Professor save(@NotNull Professor professor){
-		Professor existing = professorRepository.findById(professor.getId());
+		Professor existing = professorRepository.findOne(professor.getId());
 		if(existing == null)
 			existing = professorRepository.save(professor);
 		return existing;
 	}
 	
 	public void deletaProfessor(Professor professor){
-		Professor existing = professorRepository.findById(professor.getId());
+		Professor existing = professorRepository.findOne(professor.getId());
 		if(existing != null)
 			professorRepository.delete(existing);
 	}
