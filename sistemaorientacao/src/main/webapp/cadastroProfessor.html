@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html ng-app="homeApp">
+<head>
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet"
+	href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/css/simple-sidebar.css" rel="stylesheet">
+<script type="text/javascript" src="/webjars/angularjs/1.5.8/angular.js"></script>
+<script type="text/javascript" src="../resources/js/homeCtrl.js"></script>
+<title>SYS TCC</title>
+</head>
+<body ng-controller="homeCtrl">
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand">
+					<a href="/#/home"> SYSTCC </a>
+				</li>
+				<li><a href="/#/cadAluno">Aluno</a></li>
+				<li><a href="/#/cadProf">Professor</a></li>
+				<li><a href="/#/cadOrientacao">Orientação</a></li>
+				<li><a href="/#/acompanhamentos">Acompanhamentos</a></li>
+				<li><a href="#">Relatório</a></li>
+				<li><a href="#">Sobre</a></li>
+				<li><a href="#">Sair</a></li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<form class="form-horizontal">
+
+
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="fn">Nome: </label>
+								<div class="col-md-4">
+									<input id="fn" name="fn" type="text"
+										placeholder="Nome do Aluno" class="form-control input-md"
+										required="">
+
+								</div>
+							</div>
+
+							<!-- Checkbox-->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="fn">Curso: </label>
+
+								<div class="checkbox">
+									<label><input type="checkbox" value="">AdministraÃ§Ã£o</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Arquitetura
+										e Urbanismo</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Biomedicina</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">CiÃªncias
+										AeronÃ¡uticas</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Direito</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">EducaÃ§Ã£o
+										FÃ­sica</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Enfermagem</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Engenharia
+										Civil</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">FarmÃ¡cia</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Fisioterapia</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Medicina</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">NutriÃ§Ã£o</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Sistemas
+										de InformaÃ§Ã£o</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">ConstruÃ§Ã£o
+										de EdifÃ­cios</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="">Jogos
+										Digitais</label>
+								</div>
+
+
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="matricula">MatrÃ­cula:
+									</label>
+									<div class="col-md-4">
+										<input id="matricula" name="matricula" type="text"
+											placeholder="MatrÃ­cula" class="form-control input-md"
+											required="">
+
+									</div>
+								</div>
+
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="email">Email:
+									</label>
+									<div class="col-md-4">
+										<input id="email" name="email" type="text" placeholder="email"
+											class="form-control input-md" required="">
+
+									</div>
+								</div>
+
+								<!-- Button 1 -->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="salvar"></label>
+									<div class="col-md-4">
+										<button id="salvar" name="salvar" class="btn btn-primary">Salvar
+										</button>
+									</div>
+								</div>
+
+								<!-- Button 2 -->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="cancelar"></label>
+									<div class="col-md-4">
+										<button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar
+										</button>
+									</div>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+
+
+
+</body>
+</html>
+
+
