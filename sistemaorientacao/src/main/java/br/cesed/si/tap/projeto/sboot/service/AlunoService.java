@@ -27,7 +27,7 @@ public class AlunoService {
 	}
 	
 	public Aluno save(@NotNull Aluno aluno){
-		Aluno existing = alunoRepository.findOne(aluno.getId());
+		Aluno existing = alunoRepository.findByNome(aluno.getNome());
 		if(existing == null)
 			existing = alunoRepository.save(aluno);
 		return existing;

@@ -2,7 +2,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Pesquisa implements Serializable {
@@ -13,7 +13,7 @@ public class Pesquisa implements Serializable {
 	private String descricao;
 	@Field
 	private String categoria;
-	@Id
+	@Indexed
 	private String id;
 	
 	public String getId() {

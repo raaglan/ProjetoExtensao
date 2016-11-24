@@ -2,7 +2,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Orientacao implements Serializable{
@@ -17,7 +17,7 @@ public class Orientacao implements Serializable{
 	private Pesquisa pesquisa;
 	@Field
 	private Curso curso;
-	@Id
+	@Indexed
 	private String id;
 	
 	public Orientacao(){

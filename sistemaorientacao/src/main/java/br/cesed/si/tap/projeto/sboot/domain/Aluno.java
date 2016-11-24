@@ -1,9 +1,8 @@
 package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Aluno implements Serializable{
@@ -15,15 +14,15 @@ public class Aluno implements Serializable{
 	@Field
 	private String matricula;
 	@Field
-	private ArrayList<Curso> curso;
-	@Id
+	private Curso curso;
+	@Indexed
 	private String id;
 	
 	public Aluno(){
 		
 	}
 	
-	public Aluno(String nome, String matricula, ArrayList<Curso> curso){
+	public Aluno(String nome, String matricula,Curso curso){
 		this.nome = nome;
 		this.matricula = matricula;
 		this.curso = curso;
@@ -45,11 +44,11 @@ public class Aluno implements Serializable{
 		this.matricula = matricula;
 	}
 
-	public ArrayList<Curso> getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setCurso(ArrayList<Curso> curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 

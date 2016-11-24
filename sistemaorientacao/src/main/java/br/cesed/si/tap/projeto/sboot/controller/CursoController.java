@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.cesed.si.tap.projeto.sboot.domain.Curso;
 import br.cesed.si.tap.projeto.sboot.service.CursoService;
+import br.cesed.si.tap.projeto.sboot.service.SequenceId;
 
 @RestController
 @RequestMapping(value="/curso")
 public class CursoController {
 	@Autowired
 	private CursoService cursoService;
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity< List<Curso> > ListTodosOsCursos(){
@@ -40,6 +42,7 @@ public class CursoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> criandoCurso(@RequestBody Curso curso) {
 		try {
+			
 			cursoService.save(curso);
 			return new ResponseEntity<String>(HttpStatus.CREATED);
 

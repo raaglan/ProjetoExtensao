@@ -2,7 +2,7 @@ package br.cesed.si.tap.projeto.sboot.domain;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -19,7 +19,7 @@ public class Usuario implements Serializable{
 	private String senha;
 	@Field
 	private String email;
-	@Id
+	@Indexed
 	private String id;
 	@Field
 	private String nivel;

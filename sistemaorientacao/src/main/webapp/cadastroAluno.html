@@ -42,8 +42,8 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label">Curso:</label>
 								<div class="col-md-4">
-									<select  name="selectbasic"class="form-control input-md">
-										<option></option>
+									<select class="form-control input-md" ng-model="aluno.curso" ng-options="curso.nome  for curso in cursos ">
+										<option value="">Selecione Curso</option>
 									</select>
 								</div>
 							</div>
@@ -64,8 +64,8 @@
 							<!-- Button 1 -->
 							<div class="form-group">
 								<div class="col-md-8 col-md-offset-4">
-									<button ng-click="" name="salvar" class="btn btn-primary ">Salvar</button>
-									<button ng-click="" name="cancelar" class="btn btn-default ">Cancelar</button>
+									<button ng-click="salvarAluno(aluno)" name="salvar" ng-disabled="formCadAluno.$invalid"class="btn btn-primary ">Salvar</button>
+									<button ng-click="limpar()" name="limpar" class="btn btn-default ">Limpar</button>
 								</div>
 							</div>
 						</form>

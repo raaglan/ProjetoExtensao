@@ -31,6 +31,10 @@ var indexApp = angular.module('indexApp',['ngRoute'])
 			templateUrl:'acompanhamentos.html',
 			controller:'acompCtrl'
 		})
+		.when('/relatorio',{
+			templateUrl:'relatorio.html',
+			controller:'relCtrl'
+		})
 		.otherwise({ redirectTo: '/login'});
 		
 })
@@ -41,8 +45,32 @@ var indexApp = angular.module('indexApp',['ngRoute'])
 .controller('loginCtrl', function(){
 	
 })
-.controller('alunoCtrl', function(){
-	
+.controller('alunoCtrl', function($scope,$http){
+	//Carregamento dos Cursos
+		$http({
+			method:'GET',
+			url:'/curso'
+			
+		}).success(function(response){
+			$scope.cursos= response;
+		}).error(function(){
+			
+		});
+	//Cadastrar Aluno
+		$scope.salvarAluno= function(aluno){
+			$http({
+				method:'POST',
+				url:'/aluno',
+				data:JSON.stringify(aluno)
+				
+				
+			}).success(function(response){
+				alert(response);
+			}).error(function(){
+				
+			});
+		}
+	 
 })
 .controller('professorCtrl', function(){
 	
