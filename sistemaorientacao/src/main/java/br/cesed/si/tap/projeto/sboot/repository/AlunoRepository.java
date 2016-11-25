@@ -7,5 +7,6 @@ import br.cesed.si.tap.projeto.sboot.domain.Aluno;
 public interface AlunoRepository extends MongoRepository<Aluno, String>{
 	
 	Aluno findByNome(String nome);
+	Aluno findByNomeAndMatricula(String nome,String matricula);
 
 }

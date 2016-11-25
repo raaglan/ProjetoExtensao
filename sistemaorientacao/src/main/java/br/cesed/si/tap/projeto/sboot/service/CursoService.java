@@ -27,7 +27,7 @@ public class CursoService {
 	}
 	
 	public Curso save(@NotNull Curso curso){
-		Curso existing = cursoRepository.findOne(curso.getId());
+		Curso existing = cursoRepository.findByNome(curso.getNome());
 		if(existing == null)
 			existing = cursoRepository.save(curso);
 		return existing;

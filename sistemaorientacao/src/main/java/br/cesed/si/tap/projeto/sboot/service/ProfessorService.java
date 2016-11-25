@@ -27,7 +27,7 @@ public class ProfessorService {
 	}
 	
 	public Professor save(@NotNull Professor professor){
-		Professor existing = professorRepository.findOne(professor.getId());
+		Professor existing = professorRepository.findByNome(professor.getNome());
 		if(existing == null)
 			existing = professorRepository.save(professor);
 		return existing;

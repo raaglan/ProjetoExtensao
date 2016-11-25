@@ -39,6 +39,12 @@ public class Curso implements Serializable{
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "Curso [nome=" + nome + ", id=" + id + "]";
+	}
+	
+
 	
 	
 }

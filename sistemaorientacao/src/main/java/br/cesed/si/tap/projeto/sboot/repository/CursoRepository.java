@@ -7,4 +7,5 @@ import br.cesed.si.tap.projeto.sboot.domain.Curso;
 public interface CursoRepository extends MongoRepository<Curso, String>{
 
 	public Curso findById(int id);
+	public Curso findByNome(String nome);
 }

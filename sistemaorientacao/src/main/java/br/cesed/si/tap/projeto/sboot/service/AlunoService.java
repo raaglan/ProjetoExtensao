@@ -27,10 +27,13 @@ public class AlunoService {
 	}
 	
 	public Aluno save(@NotNull Aluno aluno){
-		Aluno existing = alunoRepository.findByNome(aluno.getNome());
-		if(existing == null)
+		Aluno existing = alunoRepository.findByNomeAndMatricula(aluno.getNome(), aluno.getMatricula());
+		if(existing == null){
 			existing = alunoRepository.save(aluno);
-		return existing;
+			return existing;
+		}
+		return existing = null;	
+		
 	}
 	
 	public void deletaAluno(Aluno aluno){

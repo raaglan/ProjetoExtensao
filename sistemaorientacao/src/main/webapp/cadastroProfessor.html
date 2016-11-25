@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../resources/js/homeCtrl.js"></script>
 <title>SYS TCC</title>
 </head>
-<body ng-controller="homeCtrl">
+<body ng-controller="professorCtrl">
 	<div id="wrapper">
 
 		<!-- Sidebar -->
@@ -34,132 +34,55 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<form class="form-horizontal">
-
-
-							<!-- Text input-->
+						<form class="form-horizontal formProf" name="formCadProf">
+						<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="fn">Nome: </label>
+								<label class="col-md-2 control-label" >Nome: </label>
 								<div class="col-md-4">
-									<input id="fn" name="fn" type="text"
-										placeholder="Nome do Aluno" class="form-control input-md"
-										required="">
-
+									<input  name="nome" ng-model="professor.nome" type="text"placeholder="Nome do Professor" class="form-control input-md"required="true">
 								</div>
 							</div>
-
-							<!-- Checkbox-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="fn">Curso: </label>
-
-								<div class="checkbox">
-									<label><input type="checkbox" value="">AdministraÃ§Ã£o</label>
+								<label class="col-md-2 control-label">Curso:</label>
+								<div class="col-md-8">
+									<spanc class="col-sm-6" ng-repeat="curso in cursos ">
+								      <label class="checkbox" >
+								        <input type="checkbox" ng-model="professor.curso[]"ng-click="selected(curso)"  />
+								        {{curso.nome}}
+								      </label>
+								    </span>
 								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Arquitetura
-										e Urbanismo</label>
+							</div>
+							<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-2 control-label" for="matricula">Matrícula:</label>
+									<div class="col-md-4">
+										<input id="matricula" name="matricula" type="text"placeholder="Matrícula"ng-model="professor.matricula" class="form-control input-md"required="true">
+									</div>
 								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Biomedicina</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">CiÃªncias
-										AeronÃ¡uticas</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Direito</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">EducaÃ§Ã£o
-										FÃ­sica</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Enfermagem</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Engenharia
-										Civil</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">FarmÃ¡cia</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Fisioterapia</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Medicina</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">NutriÃ§Ã£o</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Sistemas
-										de InformaÃ§Ã£o</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">ConstruÃ§Ã£o
-										de EdifÃ­cios</label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" value="">Jogos
-										Digitais</label>
-								</div>
-
-
 								<!-- Text input-->
 								<div class="form-group">
-									<label class="col-md-4 control-label" for="matricula">MatrÃ­cula:
-									</label>
+									<label class="col-md-2 control-label" for="email">Email:</label>
 									<div class="col-md-4">
-										<input id="matricula" name="matricula" type="text"
-											placeholder="MatrÃ­cula" class="form-control input-md"
-											required="">
-
+										<input id="email" name="email" type="text" placeholder="Email"class="form-control input-md"ng-model="professor.email" required="true">
 									</div>
 								</div>
-
-								<!-- Text input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="email">Email:
-									</label>
-									<div class="col-md-4">
-										<input id="email" name="email" type="text" placeholder="email"
-											class="form-control input-md" required="">
-
-									</div>
-								</div>
-
-								<!-- Button 1 -->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="salvar"></label>
-									<div class="col-md-4">
-										<button id="salvar" name="salvar" class="btn btn-primary">Salvar
-										</button>
-									</div>
-								</div>
-
 								<!-- Button 2 -->
 								<div class="form-group">
-									<label class="col-md-4 control-label" for="cancelar"></label>
-									<div class="col-md-4">
-										<button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar
-										</button>
+									<div class="col-md-10 col-md-offset-4">
+										<button id="salvar" name="salvar" ng-click="salvar(professor)"class="btn btn-primary">Salvar</button>
+										<button id="limpar" name="limpar"ng-click="limpar()" class="btn btn-default">Cancelar</button>
 									</div>
 								</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
+			<!-- /#page-content-wrapper -->
 		</div>
-		<!-- /#page-content-wrapper -->
-
-	</div>
-	<!-- /#wrapper -->
-
-
-
-
-</body>
+		<!-- /#wrapper -->
+	</body>
 </html>
 
 
