@@ -65,19 +65,14 @@ var indexApp = angular.module('indexApp', [ 'ngRoute' ])
 
 	$scope.cursos1 = [];
 	$scope.selected = function(curso) {
-		// console.log(numero_contrato);
 		var index = $scope.cursos1.indexOf(curso);
 
-		// se já selecionou o contrato, então remove (nesse caso o checkbox foi
-		// desmarcado)
 		if (index > -1){
 			$scope.cursos1.splice(index, 1);
-		// se selecionou um novo contrato, adiciona ao array
 		}else{
 			$scope.cursos1.push(curso);
 			
 		}
-		// print em tela do array com os contratos selecionados
 		console.log($scope.cursos1);
 		$scope.professor.push($scope.cursos1);
 	
