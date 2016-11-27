@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="homeApp">
+<head>
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet"
+	href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/css/simple-sidebar.css" rel="stylesheet">
+<script type="text/javascript" src="/webjars/angularjs/1.5.8/angular.js"></script>
+<script type="text/javascript" src="../resources/js/homeCtrl.js"></script>
+<title>SYS TCC</title>
+</head>
+<body ng-controller="homeCtrl">
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"><a href="/#/home"> SYSTCC </a></li>
+				<li><a href="/#/cadAluno">Aluno</a></li>
+				<li><a href="/#/cadProf">Professor</a></li>
+				<li><a href="/#/cadOrientacao">Orientação</a></li>
+				<li><a href="/#/acompanhamentos">Acompanhamentos</a></li>
+				<li><a href="#">Relatório</a></li>
+				<li><a href="#">Sobre</a></li>
+				<li><a href="#">Sair</a></li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<form class="form-horizontal" name="formCadOrientacao">
+							<!-- Select Basic -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="selectbasic">Curso:
+								</label>
+								<div class="col-md-4">
+									<select class="form-control"
+										ng-change="profAndAlunosByCurso(orientacao)" ng-model="orientacao.curso"
+										ng-options="curso.nome for curso in cursos ">
+										<option>Selecione Um Curso</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group" ng-show="professores.length > 0">
+								<label class="col-md-2 control-label" for="selectbasic">Professor:
+								</label>
+								<div class="col-md-4">
+									<select class="form-control" ng-model="orientacao.professor"
+										ng-options="professor.nome for professor in professores ">
+										<option>Selecione Um Professor</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group" ng-show="alunos.length > 0 ">
+								<label class="col-md-2 control-label" for="selectbasic">Aluno:
+								</label>
+								<div class="col-md-4">
+									<select class="form-control" ng-model="orientacao.aluno"
+										ng-options="aluno.nome for aluno in alunos ">
+										<option>Selecione Um Aluno</option>
+									</select>
+								</div>
+							</div>
+							<!-- Text input-->
+							<div class="form-group"
+								ng-show="professores.length > 0 || alunos.length > 0 ">
+								<label class="col-md-2 control-label">Pesquisa:</label>
+								<div class="col-md-4">
+									<input name="fn" ng-model="orientacao.pesquisa"type="text" placeholder="Nome da Pesquisa"class="form-control input-md" required="true">
+								</div>
+						</form>
+						<!-- Button 1 -->
+						<div class="form-group">
+							<div class="col-md-10 col-md-offset-4">
+								<button id="salvar" name="salvar" class="btn btn-primary">Salvar</button>
+								<button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+		</div>
+		<!-- /#wrapper -->
+	</body>
+</html>
+
+
+
+
+
